@@ -14,10 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         // Send the notification
-        OneSignal.postNotification(notificationData, function(successResponse) {
+        OneSignal.push(function() {
+            OneSignal.postNotification(notificationData, function(successResponse) {
             console.log("Notification sent:", successResponse);
-        }, function(errorResponse) {
+        },  function(errorResponse) {
             console.error("Notification failed:", errorResponse);
         });
-    }
+    }});
 });
+
+
